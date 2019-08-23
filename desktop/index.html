@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+
+<html lang="en">
+    <head>
+        <meta charset='utf-8'/>
+
+        <!--fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap" rel="stylesheet">
+
+        <!--style sheets-->
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+
+        <!--scripts-->
+        <script src="js/client.js"></script>
+        <script src="js/render.js"></script>
+        <script src="js/window.js"></script>
+        <script src="js/cache.js"></script>
+
+        <title>Tempest Client</title>
+    </head>
+    <body>
+        <header>
+            <div class="title-box">
+                <img src="tempest-icon.png" width="60px" height="60px"/>
+                <span class="title">Tempest</span>
+            </div>
+        </header>
+        <body>
+            <div class="login-container">
+                <div class="login-box">
+                    <div class="login-header"></div>
+                    <div class="login-enter-box">
+                        <label for="#ip-addr" class="login-label">IP Address</label>
+                        <input id="ip-addr" type="text" placeholder="Enter your ip"/>
+                        <label for="#auth-key" class="login-label">Authorization Key</label>
+                        <input id="auth-key" type="text" placeholder="Enter your key"/>
+                    </div>
+                    <div class="login-buttons">
+                        <button id="login-button">Login</button>
+                        <a id="faq-button" href="https://www.tempest.io/faq#login">Help</a>
+                    </div>                 
+                </div>
+            </div>
+
+            <!--page control script-->
+            <script src="js/script.js"></script>
+        </body>
+    </body>
+</html>

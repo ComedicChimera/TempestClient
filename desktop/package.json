@@ -1,0 +1,15 @@
+{
+  "name": "tempest-desktop",
+  "version": "1.0.0",
+  "description": "The desktop client for tempest server",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "ComedicChimera",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^6.0.2"
+  }
+}
