@@ -1,5 +1,5 @@
 function loadHomeData() {
-    client.requestJSON("/config/get-data")
+    client.requestJSON("/config/get")
         .then((data) => {
             
         })
