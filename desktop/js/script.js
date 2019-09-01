@@ -8,40 +8,49 @@ let client;
         .then((c) => {
             client = c;
 
-            loadHomeWindow();
+            loadWindow("home");
         })
         .catch((_) => {
-            // fail silently for now
+            loadWindow("login");
         });
-    } 
+    }
+    else
+        loadWindow("login"); 
 })();
 
 // jquery defined above (in render.js)
-// executed after body loads
-$('#login-button').mousedown(() => {
-    let loginData = {
-        "ip-addr": $('#ip-addr').val(),
-        "auth-key": $('#auth-key').val()
-    };
+// executed after body loads/when new "page"
+// is loaded in the app
+function attachHandlers() {
+    $('#login-button').mousedown(() => {
+        let loginData = {
+            "ip-addr": $('#ip-addr').val(),
+            "auth-key": $('#auth-key').val()
+        };
+    
+        if (loginData["ip-addr"] == null) {
+            showError("You must specify an IP address");
+            return;
+        }
+        else if (loginData["auth-key"] == null) {
+            showError("You must specify an authorization key");
+            return;
+        }
+    
+        createTempestClient(loginData)
+            .then((c) => {
+                client = c;
+            
+                saveToCache("login", loginData);
+    
+                loadWindow("home");
+            })
+            .catch((msg) => {
+                showError(msg);
+            });
+    });
+}
 
-    if (loginData["ip-addr"] == null) {
-        showError("You must specify an IP address");
-        return;
-    }
-    else if (loginData["auth-key"] == null) {
-        showError("You must specify an authorization key");
-        return;
-    }
+$('body').ready(attachHandlers);
 
-    createTempestClient(loginData)
-        .then((c) => {
-            client = c;
-        
-            saveToCache("login", loginData);
 
-            loadHomeWindow();
-        })
-        .catch((msg) => {
-            showError(msg);
-        });
-});

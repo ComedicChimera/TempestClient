@@ -1,0 +1,35 @@
+<header>
+    <div class="title-box">
+        <img src="tempest-icon.png" width="60px" height="60px"/>
+        <span class="title">Tempest</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li>Home</li>
+            <li>Data</li>
+            <li>Music</li>
+            <li>Images</li>
+        </ul>        
+    </nav>
+</header>
+<div class="home-container">
+    <div class="home-options">
+        <script>loadHomeData();</script>
+    </div>
+    <div class="admin-options">
+        <div class="admin-login">
+            <div class="login-enter-box">
+                <label for="#admin-code">Admin Code</label>
+                <input id="admin-code" type="text" placeholder="Enter your code"/>
+            </div>
+            <div class="login-buttons">
+                <button id="login-button">Enter</button>
+                <a id="faq-button" href="https://www.tempest.io/faq#admin-code">Help</a>
+            </div>
+        </div>
+        <button id="refresh">Refresh</button>
+    </div>
+
+    <script src="js/page-scripts/home.js"/>
+</div>
