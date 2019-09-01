@@ -1,6 +1,6 @@
 class TempestClient {
     constructor(host, token) {
-        this.urlBase = `https://${host}/`;
+        this.urlBase = `http://${host}/`;
         this.token = token;
     }
 
@@ -11,15 +11,13 @@ class TempestClient {
                 method: 'get',
                 headers: {"Authorization": this.token},
                 success: (data, status, jqXHR) => {
-                    let jData = JSON.parse(data);
+                    if (data.hasOwnProperty('status') && !data.status)
+                        reject(data.message);
 
-                    if (jData.hasOwnProperty('status') && !jData.status)
-                        reject(jData.message);
-
-                    resolve(jData);
+                    resolve(data);
                 },
                 error: (jqXHR, textStatus, errorThrown) => {
-                    reject(errorThrown);
+                    reject(textStatus);
                 }
             });
         });
@@ -29,23 +27,20 @@ class TempestClient {
 function createTempestClient(loginData) {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: `https://${loginData['ip-addr']}/user/login`,
+            url: `http://${loginData['ip-addr']}/user/login`,
             method: 'post',
             data: loginData['auth-key'],
             success: (data, status, jqXHR) => {
-                // data is status and token string
-                let jData = JSON.parse(data);
+                if (!data.status)
+                    reject(data.message);
 
-                if (!jData.status)
-                    reject(jData.message);
-
-                resolve(new TempestClient(loginData['ip-addr'], jData.message));
+                resolve(new TempestClient(loginData['ip-addr'], data.message));
             },
             error: (jqXHR, textStatus, errorThrown) => {
-                console.log(errorThrown);
+                console.log(textStatus); 
                 
                 reject('Failed to connect to server');
             }
-        })
+        });
     });
 }
