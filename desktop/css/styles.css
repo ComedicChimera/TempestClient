@@ -13,6 +13,12 @@ header {
     padding: 10px;
 
     color: white;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
 }
 
 header .title-box {
@@ -28,6 +34,23 @@ header .title-box .title {
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+}
+
+header nav {
+    margin: 15px;
+}
+
+header nav ul {
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline;
+    padding: 0px 10px 0px 10px;
+
+    font-size: 24px;
+
+    font-family: 'Open Sans', sans-serif;
 }
 
 .login-container {
@@ -144,7 +167,7 @@ header .title-box .title {
 
     font-family: 'Open Sans', sans-serif;
 
-    padding: 10px;
+    margin: 20px;
 }
 
 .home-container .home-options {
@@ -152,21 +175,186 @@ header .title-box .title {
     flex-direction: column;
 
     justify-content: space-evenly;
+
+    padding: 10px;
+    border-radius: 3px;
+
+    box-shadow: 0px 0px 1px 1px #888888;
+
+    width: 40%;
+
+    color: #212121;
+    font-size: 22px;
 }
 
 .home-options label {
     font-weight: bold;
-    font-size: 18px;
 
-    margin-bottom: 5px;
+    margin-bottom: 2px;
+
+    font-family: 'Roboto', sans-serif;
 }
 
 .home-options span {
-    font-size: 16px;
+    font-size: 18px;
+
+    border-bottom: solid 1px #888888;
 
     margin-bottom: 5px;
 }
 
-.home-options .ban-list table {
-    border: 1px black solid;
+.home-options #ban-list table {
+    border: 1px #888888 solid;
+
+    width: 60%;
+}
+
+#ban-list table .header-row {
+    font-style: italic;
+
+    margin-bottom: 5px;
+
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+
+    font-weight: normal;
+    padding: 5px;
+
+    width: 100%;
+}
+
+#ban-list table tr {
+    width: 100%;
+}
+
+#ban-list table td {
+    padding: 5px;
+
+    min-height: 26px;
+    height: 26px;
+
+    font-size: 16px;
+
+    width: 96%;
+    display: inline-block;
+}
+
+#ban-list .ban-grey {
+    background-color: #ebebeb;
+}
+
+.admin-options {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+
+    height: 190px;
+
+    margin-top: 30px;
+}
+
+.admin-options .admin-login {
+    margin-top: 50px;
+
+    background-color: #888888;
+
+    color: white;
+
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.admin-login .admin-enter-box {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+.admin-login .admin-enter-box label {
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+    font-size: 14px;
+}
+
+.admin-login .admin-enter-box input {
+    padding: 8px;
+    border-radius: 5px;
+
+    color: #212121;
+    
+    outline: none;
+
+    border: none;
+
+    box-shadow: 0px 0px 1px 1px inset #888888;
+
+    font-size: 18px;
+}
+
+.admin-login .admin-buttons {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+.admin-login .admin-buttons #admin-login-button {
+    color: #888888;
+    background-color: white;
+
+    padding: 10px;
+    border-radius: 3px;
+
+    font-family: 'Open Sans', sans-serif;
+
+    border: none;
+
+    box-shadow: 0px 0px 1px 1px #212121;
+
+    outline: none;
+
+    font-size: 16px;
+}
+
+.admin-login .admin-buttons #admin-login-button:active {
+    box-shadow: none;
+}
+
+.admin-login .admin-buttons #faq-button {
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.admin-options #refresh {
+    margin: 10px;
+
+    color: white;
+    background-color: #888888;
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+
+    border-radius: 3px;
+    border: none;
+
+    padding: 5px;
+
+    outline: none;
+
+    box-shadow: 0px 0px 1px 1px #212121;
+
+    height: 50px;
+}
+
+.admin-options #refresh:active {
+    box-shadow: none;
 }

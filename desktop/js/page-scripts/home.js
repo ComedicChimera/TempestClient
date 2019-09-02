@@ -11,19 +11,45 @@ function loadHomeData() {
                 <span id="#os">${data.os}</span>
                 <label for="#version">Version</label>
                 <span id="#version">${data.version}</span>
-                <div class="ban-list"><table><tr><th>Banned IP</th></tr>`;
+                <label for="#ban-list">Ban List</label>
+                <div id="ban-list"><table><tbody><tr class="header-row">
+                <th>IP Address</th></tr>`;
 
             
             if (data['ban-list'] != null) {
-                for (var item of data['ban-list']) 
-                    html += `<tr><td id="#${item.id}">${item.ipAddr}</td></tr>`;
-            }
+                for (var i in data['ban-list']) {
+                    let item = data['ban-list'][i];
 
-            html += "</table></div>";
+                    html += `<tr><td id="#${item.id}" class="banned-ip${i % 2 == 0 ? " ban-grey" : ""}">${item.ipAddr}</td></tr>`;
+                }                    
+            }
+            else
+                html += '<tr><td id="blank" class="ban-grey"></td></tr>';
+
+            html += "</tbody></table></div>";
 
             $('.home-options').html(html);
+
+            if (data.admin) {
+                enableAdmin();
+            }
         })
         .catch((e) => {
             showError(e);
         });
+}
+
+function enableAdmin() {
+    $('#name').addClass("editable");
+    $('#name').prop("contenteditable", "true");
+
+    $('#auth-key').addClass("editable");
+    $('#auth-key').prop("contenteditable", "true");
+
+    $('.banned-ip table tbody').each(() => {
+        if (this.attr('id') != "blank")
+            this.html(this.html() + `<button id="button-${this.attr('id')}">x</button>`);
+    });
+
+    $('.banned-ip tr:last').after('<tr class="add-ban-row"><td><button class="add-ban">Add Ban</button>');
 }
