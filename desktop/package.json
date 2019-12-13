@@ -13,6 +13,6 @@
     "electron": "^6.0.2"
   },
   "dependencies": {
-    "npm": "^6.11.2"
+    "npm": "^6.13.4"
   }
 }
